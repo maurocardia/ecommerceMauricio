@@ -1,0 +1,28 @@
+
+.categoriesLeft{
+ display:none;
+}
+
+
+
+.liTitle{
+    list-style: none;
+    color: rgb(255, 10, 10);
+    padding: 1rem;
+}
+
+@media only screen and (min-width: 680px) {
+    .categoriesLeft{
+        display:block;
+        border-radius: 0%;
+       }
+
+       .listCategories > li{
+        border-style:none;
+        border-bottom: solid;
+        border-color: lightgray;
+        border-width: 1px;
+        
+       }
+       
+}

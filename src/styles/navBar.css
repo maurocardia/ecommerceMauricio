@@ -1,0 +1,25 @@
+.loginBar{
+    color: antiquewhite;
+}
+
+.menuBar{
+    justify-content: right;
+    width: 100%;
+    font-size: 20px;
+} 
+
+.menuBar > .purchasesBar{
+    margin-left: 0.3rem;
+}
+
+.menuBar > .loginBar{
+    margin-left: 0.3rem;
+}
+
+.ecommerce{
+    font-weight: 530;
+}
+
+.navBarHome{
+    width: ;
+}
