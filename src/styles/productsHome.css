@@ -36,7 +36,7 @@
     text-align: left;
     margin: 0;
     font-weight: 600;
-    color: rgb(186, 194, 200);
+    color: rgb(249, 162, 162);
   
 }
 
@@ -61,6 +61,7 @@
     text-align: left;
     margin-left: 2rem;  
     font-size: 15px;
+    
 }
 
 .containerImg{
@@ -79,6 +80,7 @@
     width: 90%;
     height:5rem;
     white-space: pre-line;
+    
   
 }
 
