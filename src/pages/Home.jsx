@@ -9,6 +9,7 @@ import axios from 'axios';
 import {BsFilterRight} from "react-icons/bs"
 import Filter from '../components/Filter';
 import {AiOutlineShoppingCart} from "react-icons/ai"
+import getConfig from '../utils/getConfig';
 
 
 
@@ -20,6 +21,7 @@ const Home = () => {
     const [categories, setCategories] = useState([])
     const [filter, setFilter]= useState(true)
 
+
     useEffect(() => {
         dispatch(getProductsThunk())
         axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products/categories/`)
@@ -27,6 +29,20 @@ const Home = () => {
     }, [])
 
     console.log(categories)
+
+    const addToCart = (idProduct)=>{
+        const item={
+            "id": idProduct,
+            "quantity": 1
+        }
+       axios.post("https://ecommerce-api-react.herokuapp.com/api/v1/cart",item,getConfig())
+       .catch(error => console.log(error.response))
+
+       
+      
+    
+    }
+    
 
     return (
         <div className="containerHome">
@@ -73,8 +89,8 @@ const Home = () => {
                 <div className="containerListProducts">
 
                     {products.map(product => (
-                        <div onClick={() => { navigate(`/product/${product.id}`) }} className="containerList" key={product.id}>
-                            <div className="containerImg">
+                        <div className="containerList" key={product.id} >
+                            <div className="containerImg" onClick={() => { navigate(`/product/${product.id}`) }} >
                                 <img src={product.productImgs[0]} alt="" />
 
                             </div>
@@ -82,7 +98,7 @@ const Home = () => {
                             <p>Price</p>
                             <div className='containerPrice'>
                                 <h4>${product.price}</h4>
-                                <button><AiOutlineShoppingCart/></button>
+                                <button onClick={()=>addToCart(product.id)}><AiOutlineShoppingCart/></button>
                             </div>   
                         </div>
                     ))}

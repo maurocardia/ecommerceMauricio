@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import ProductDetails from './pages/ProductDetails'
 import { NavBar,Loading } from './components'
 import { useSelector } from 'react-redux/es/exports'
+import CartModal from './components/CartModal'
 
 
 
@@ -19,6 +20,7 @@ function App() {
 
         <HashRouter>
             <NavBar/>
+            <CartModal/>
             {loading && <Loading/>}
           <Routes>
             <Route path='/purchases' element={<Purchases/>}/>
