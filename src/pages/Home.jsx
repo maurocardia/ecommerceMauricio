@@ -10,6 +10,8 @@ import {BsFilterRight} from "react-icons/bs"
 import Filter from '../components/Filter';
 import {AiOutlineShoppingCart} from "react-icons/ai"
 import getConfig from '../utils/getConfig';
+import { getCartsThunk } from '../store/slices/favorites.slice';
+import { addToCartThunk } from '../store/slices/cart.slice';
 
 
 
@@ -24,8 +26,9 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(getProductsThunk())
-        axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products/categories/`)
+        axios.get(`https://ecommerce-api-react.herokuapp.com/api/v1/products/categories`)
             .then(res => setCategories(res.data.data.categories))
+            .catch(error => console.log(error.response))
     }, [])
 
     console.log(categories)
@@ -35,14 +38,16 @@ const Home = () => {
             "id": idProduct,
             "quantity": 1
         }
-       axios.post("https://ecommerce-api-react.herokuapp.com/api/v1/cart",item,getConfig())
-       .catch(error => console.log(error.response))
+       dispatch(addToCartThunk(item))
+       console.log(item)
+       
+
 
        
       
     
     }
-    
+    console.log(categories)
 
     return (
         <div className="containerHome">

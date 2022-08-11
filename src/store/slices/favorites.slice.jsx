@@ -16,8 +16,14 @@ export const favoritesSlice = createSlice({
 
 export const getFavoritesThunk = () => (dispatch) => {
     dispatch(setLoading(true));
-    return axios.get("https://ecommerce-api-react.herokuapp.com/api/v1/purchases/1", getConfig())
-        .then((res) => dispatch(setFavorites(res.data)))
+    return axios.get("https://ecommerce-api-react.herokuapp.com/api/v1/purchases", getConfig())
+        .then((res) => dispatch(setFavorites(res.data.data.purchases)))
+        .finally(() => dispatch(setLoading(false)));
+}
+export const getCartsThunk = () => (dispatch) => {
+    dispatch(setLoading(true));
+    return axios.get("https://ecommerce-api-react.herokuapp.com/api/v1/cart", getConfig())
+        .then((res) => dispatch(setFavorites(res.data.data.cart.products)))
         .finally(() => dispatch(setLoading(false)));
 }
 

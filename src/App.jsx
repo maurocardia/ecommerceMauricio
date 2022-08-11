@@ -5,7 +5,7 @@ import Purchases from './pages/Purchases'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import ProductDetails from './pages/ProductDetails'
-import { NavBar,Loading } from './components'
+import { NavBar,Loading, ProtectedRoutes } from './components'
 import { useSelector } from 'react-redux/es/exports'
 import CartModal from './components/CartModal'
 
@@ -20,15 +20,17 @@ function App() {
 
         <HashRouter>
             <NavBar/>
-            <CartModal/>
             {loading && <Loading/>}
           <Routes>
-            <Route path='/purchases' element={<Purchases/>}/>
+            <Route element={<ProtectedRoutes/>}>
+
+              <Route path='/purchases' element={<Purchases/>}/>
+            </Route>
             <Route path='/login' element={<Login/>}/>
             <Route path='/' element={<Home/>}/>
             <Route path='/product/:id' element={<ProductDetails/>}/>
           </Routes>
-        </HashRouter>
+       </HashRouter>
     </div>
     
   )

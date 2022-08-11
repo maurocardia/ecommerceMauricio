@@ -13,7 +13,7 @@ const Filter = ({categories,filter,dispatch}) => {
                         onClick={()=>{setActiveFilter(!activeFilter)}}>
                         Categories
                     </li>
-                     {activeFilter && categories.map(category=>(
+                     {activeFilter && categories?.map(category=>(
                             
                             <li class="list-group-item" 
                                 key={category.id}  
