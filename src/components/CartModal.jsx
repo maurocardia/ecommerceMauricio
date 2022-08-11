@@ -14,6 +14,7 @@ const CartModal = ({show,handleClose}) => {
     const cart = useSelector(state => state.cart)
     const [cartProducts, setCartProducts] = useState([])
     const dispatch = useDispatch()
+    let totalPrice = 0
 
 useEffect(()=>{
     dispatch(getCartThunk())
@@ -22,11 +23,21 @@ useEffect(()=>{
 
 const buyProduts = ()=>{
     dispatch(buyThunk())
+    
 }
+cart.forEach(element => {
+    totalPrice = totalPrice + ((Number(element.price))*(Number(element.productsInCart.quantity)))
+  });
+  console.log(cart)
 
+
+const deleteProduct=(id)=>{
+    axios.delete(`https://ecommerce-api-react.herokuapp.com/api/v1/cart/${id}`,getConfig())
+    .then(()=> dispatch(getCartThunk()))
+}
   
 
-    console.log(cart)
+ 
 
     return (
         <div>
@@ -38,7 +49,11 @@ const buyProduts = ()=>{
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <div className='containerBuy'>
-                        <button className='buyBotton' onClick={buyProduts}>Buy</button>
+                        <div className="containerBuyTotal">
+                            <button className='buyBotton' onClick={buyProduts}>Buy</button>
+                            <div>Total: $ {totalPrice}</div>
+
+                        </div>
                     </div>
                   {cart.map(product=>(
                     <div className='containercartArticles'>
@@ -46,12 +61,12 @@ const buyProduts = ()=>{
                         <div className="deleteBrand">
                            
                             <small>{product.brand}</small>
-                            <button className="deleteCart"><AiTwotoneDelete/></button>
+                            <button className="deleteCart" onClick={()=>deleteProduct(product.id)}><AiTwotoneDelete/></button>
                         </div>
                         <h5 onClick={()=>{navigate(`/product/${product.id}`)}}>{product.title}</h5>
                         <div className='quantity'>{product.productsInCart.quantity}</div>
                         <div className='containerPriceCart'>
-                            <h5 className="priceCart">Total: ${product.price}</h5>
+                            <h5 className="priceCart">Total: ${(product.price)*product.productsInCart.quantity}</h5>
                         </div>
                     </div>
                 

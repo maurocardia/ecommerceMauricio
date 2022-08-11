@@ -33,7 +33,8 @@ export const addToCartThunk = (item) => (dispatch) => {
 export const buyThunk = () => (dispatch) => {
     dispatch(setLoading(true));
     return axios.post("https://ecommerce-api-react.herokuapp.com/api/v1/purchases",{},getConfig())
-        .then(() => dispatch(getFavoritesThunk()))
+        .then(() => {dispatch(setCart([]))})
+                    
         .finally(() => dispatch(setLoading(false)));
 }
 

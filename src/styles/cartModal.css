@@ -60,6 +60,8 @@ small{
     border-radius: 0.5rem;
     color: white;
     font-weight: 650;
+ 
+ 
 }
 
 .containerBuy{
@@ -67,4 +69,27 @@ small{
     display:flex;
     justify-content: center;
     align-items: center;
+    border-bottom-style: solid;
+    border-width: 1px;
+    height: 30%;
+    
+ 
+}
+
+.containerBuyTotal > div{
+    display: block;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    border-color: lightgray;
+    width: 100%;
+
+}
+
+.containerBuyTotal{
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+    
 }

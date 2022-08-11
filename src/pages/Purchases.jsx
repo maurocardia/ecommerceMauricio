@@ -7,25 +7,25 @@ const Favorites = () => {
     const purchases = useSelector(state=>state.favorites) 
     const dispatch = useDispatch()
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-
-
+ 
     useEffect(()=>{
         dispatch(getFavoritesThunk())
     },[])
  console.log(purchases)
     return (
-        <div>
+        <div className='purchasesContainerSection'>
             {
                 purchases.map(purchase=>(
-                        
+                     
                     purchase.cart.products.map(product=>(
                     <div className='containerPurchases'>
-
-                        <small>{new Date(Date.UTC(product.createdAt)).toLocaleDateString(undefined, options)}</small>
-                        <div className='descriptionBuy'></div>
+                        <small>{purchase.createdAt}</small> 
+                        
+                        <div className='descriptionBuy'>
                             <li>{product.title}</li>
                             <div className='quantity'>{product.productsInCart.quantity}</div>
-                            <h5 className='PriceArticle'>$ {product.price}</h5>
+                            <p className='priceArticle'>$ {product.price}</p>
+                        </div>    
                     </div>
                     ))
                  

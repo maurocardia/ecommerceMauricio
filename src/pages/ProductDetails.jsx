@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { getProductsThunk } from '../store/slices/Products.slice';
 import "../styles/productsDetails.css"
 import {GrFormNext, GrFormPrevious} from "react-icons/gr"
+import { addToCartThunk } from '../store/slices/cart.slice'
+
 
 const ProductDetails = () => {
     const [productDetails, setProductDetails]=useState({})
@@ -31,6 +33,17 @@ useEffect(()=>{
     dispatch(getProductsThunk())
 },[])
 
+const addToCart = (idProduct)=>{
+    const item={
+        "id": idProduct,
+        "quantity": quantity
+    }
+   dispatch(addToCartThunk(item))
+   console.log(item)
+
+}
+console.log(productDetails)
+
     return (
         <div>
             <div className='containerDetails'>
@@ -56,7 +69,7 @@ useEffect(()=>{
                         </div>
                     </div>
                     <div className='containerButtonAdd'>
-                        <button className='buttonAdd'>Add to cart</button>
+                        <button className='buttonAdd' onClick={()=>addToCart(productDetails.id)}>Add to cart</button>
                     </div>
 
                 </div>

@@ -6,12 +6,15 @@ import {useNavigate} from "react-router-dom"
 import CartModal from './CartModal'
 import { Button, Offcanvas} from 'react-bootstrap';
 import { useDispatch } from 'react-redux/es/exports';
-
+import { useSelector } from 'react-redux/es/exports';
 
 const NavBar = () => {
+
+  const cart = useSelector(state => state.cart)
   const dispatch = useDispatch()
   const token=localStorage.getItem("token","")
   const [show, setShow] = useState(false);
+ 
 
   const handleClose = () => setShow(false);
   const handleShow = () => {
@@ -29,8 +32,8 @@ const NavBar = () => {
     navigate("/login")
     
   }
- 
-
+  
+   
 
     return (
         <div className='navBarHome'>
@@ -45,7 +48,7 @@ const NavBar = () => {
                 <AiOutlineShoppingCart/>
             </Nav.Link>
                 
-                {token?  (<Nav.Link onClick={logOut} > Log Out</Nav.Link>
+                {token?  (<Nav.Link onClick={logOut} className="logOut"> <div>Log Out</div></Nav.Link>
                 ):(<Nav.Link className="loginBar" href="#/login"><AiOutlineUser/></Nav.Link>)}
               </Nav>
             </Container>

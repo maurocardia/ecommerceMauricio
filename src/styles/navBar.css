@@ -20,6 +20,21 @@
     font-weight: 530;
 }
 
-.navBarHome{
-    width: ;
+.logOut > div{
+    font-size: 2.8vw;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-weight: 500;
+    padding: 0.2rem;
+
+   
 }
+
+@media only screen and (min-width: 600px){
+    .logOut > div{
+        font-size: 17px;
+}
+
+
+
