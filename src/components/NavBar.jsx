@@ -36,7 +36,7 @@ const NavBar = () => {
    
 
     return (
-        <div className='navBarHome'>
+        <div className='navBarHome container'>
 
           <Navbar bg="light" variant="light" >
             <Container>
