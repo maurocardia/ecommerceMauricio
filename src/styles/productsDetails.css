@@ -7,7 +7,7 @@
 .productLeft{
     display: flex;
     align-items: center;
-    width: 50%;
+    width: 70%;
     justify-content: center;
 }
 
@@ -24,8 +24,41 @@
     
 }
 
+.leftButton{
+    position: relative;
+    left: 0px;
+}
+
+.rightButton{
+    position: relative;
+    right: 0px
+}
+
 .productLeft > img{
-    width: 60%;
+    width: 50vw;
+    height: 15rem;
+    object-fit: contain;
+    margin-bottom: 2rem;
+}
+
+.containerImgDetails{
+    height: 8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0.5rem;
+    width: 80%;
+    justify-items: center;
+}
+.containerImgDetails>img{
+    width: 30%;
+    height: 30%;
+    object-fit: contain;
+}
+
+.containerProductLeft{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1>svg{
@@ -67,8 +100,8 @@ h1>svg{
 }
 
 .containerQuantity > button{
-    width: 2rem;
-    height: 1.5rem;
+    width: 100%;
+    height: 70%;
     border-width: 1px;
     display: flex;
     justify-content: center;
@@ -79,23 +112,29 @@ h1>svg{
 
 .containerQuantity > h3{
     border-style: solid;
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 70%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2vw;
     border-width: 1px;
+    margin-bottom: 0;
 }
 .containerQuantity{
     display: flex;
-    padding-left: 2rem;
+    width: 40%;
+    
    
 }
 
 .containerAdd{
     display: flex;
     justify-content: space-evenly;
+}
+
+.containerAdd > h5{
+    font-size: 2vw;
 }
 
 button > h4{
@@ -182,13 +221,19 @@ li{
     border-style: none;
     border-radius: 50%;
     background-color: rgb(237, 84, 84);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
 }
 
 
 .containerPriceSuggest{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    width: 100%;
 
 }
 
@@ -196,4 +241,71 @@ li{
     height: 1.5rem;
     margin-bottom: 0;
     font-size: 1vw;
+}
+
+@media only screen and (min-width: 300px) and (max-width:600px) {
+    .containerSuggestedUl{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .containerDetails{
+        margin:0.5rem;
+        display: block;
+    }
+
+    .containerImgDetails{
+        height: 50%;
+        padding: 0;
+        width: 60%;
+    }
+
+    .productLeft > img{
+        margin: 0;
+        height: 12rem;
+        margin-bottom: 2rem;
+    }
+    .containerImgDetails > img{
+        height: 100%;
+    }
+
+    .productRight{
+        width: 100%;
+        padding:3rem 3rem;
+        
+    }
+
+    .productRight > p{
+        font-size: 3vw;
+    }
+
+    .productRight > h1{
+        font-size: 3.8vw;
+    }
+
+    .productRight > h4{
+        font-size: 3.8vw;
+    }
+
+    .containerAdd > h5{
+        font-size: 3.8vw;
+    }
+
+    .containerSuggested{
+        margin-bottom: 1rem;
+    }
+    .containerSuggestedUl{
+        justify-items: center;
+    }
+}
+
+
+@media only screen and (min-width: 600px) and (max-width:900px) {
+    .containerSuggestedUl{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .containerSuggested{
+        margin-bottom: 1rem;
+    }
 }

@@ -19,7 +19,7 @@ const Favorites = () => {
                      
                     purchase.cart.products.map(product=>(
                     <div className='containerPurchases'>
-                        <small>{purchase.createdAt}</small> 
+                        <small>{new Date(purchase.createdAt).toLocaleDateString()}</small> 
                         
                         <div className='descriptionBuy'>
                             <li>{product.title}</li>

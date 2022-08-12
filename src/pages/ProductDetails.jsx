@@ -6,7 +6,7 @@ import { getProductsThunk } from '../store/slices/Products.slice';
 import "../styles/productsDetails.css"
 import {GrFormNext, GrFormPrevious} from "react-icons/gr"
 import { addToCartThunk } from '../store/slices/cart.slice'
-
+import {AiOutlineShoppingCart} from "react-icons/ai"
 
 const ProductDetails = () => {
     const [productDetails, setProductDetails]=useState({})
@@ -16,6 +16,7 @@ const ProductDetails = () => {
     const [suggestedProducts,setSuggestedProducts]= useState([])
     const navigate = useNavigate()
     const [quantity,setQuantity]=useState(0)
+    const [codImg,setCodImg]=useState(0)
 
 
     useEffect(()=>{
@@ -42,17 +43,41 @@ const addToCart = (idProduct)=>{
    console.log(item)
 
 }
-console.log(productDetails)
+const changeToImage=()=>{
+    if(codImg===2){
+        setCodImg(0)
+    }else{setCodImg(codImg+1)}
+
+
+    
+    console.log(codImg)
+    return codImg
+}
+
+const changeToImagerev=()=>{
+    if(codImg===0){
+        setCodImg(2)
+    }else{setCodImg(codImg-1)}
+}
+
 
     return (
         <div>
             <div className='containerDetails'>
+                <div className='containerProductLeft'>
 
-                <div className='productLeft'>
-                    <button><h1><GrFormPrevious/></h1></button>
-                    <img src={productDetails?.productImgs?.[0]} alt="" />
-                    <button><h1><GrFormNext/></h1></button>
+                    <div className='productLeft'>
+                        <button className='leftButton' onClick={()=>changeToImagerev()}><h1><GrFormPrevious/></h1></button>
+                        <img src={productDetails?.productImgs?.[codImg]} alt="" />
+                        <button className='rightButton' onClick={()=>changeToImage()}><h1><GrFormNext/></h1></button>
+                    </div>
+                    <div className='containerImgDetails'>
+                        <img src={productDetails?.productImgs?.[1] } alt="" onClick={()=>{setCodImg(1)}} />
+                        <img src={productDetails?.productImgs?.[2]} alt="" onClick={()=>{setCodImg(2)}}/>
+                        <img src={productDetails?.productImgs?.[0]} alt="" onClick={()=>{setCodImg(0)}}/>
+                    </div>
                 </div>
+
                 <div className='productRight'>
 
                     <h1>{productDetails?.title}</h1>
@@ -78,9 +103,9 @@ console.log(productDetails)
             <ul className='containerSuggestedUl'>
                 {
                     suggestedProducts.map(suggestedProduct => (
-                      <li onClick={()=>navigate(`/product/${suggestedProduct.id}`)}>
+                      <li >
                         <div className='containerSuggested'>
-                            <div className='containerImgSuggested'>
+                            <div className='containerImgSuggested' onClick={()=>navigate(`/product/${suggestedProduct.id}`)}>
                                 <img src={suggestedProduct.productImgs[0]} alt="" />
 
                             </div>
@@ -88,7 +113,7 @@ console.log(productDetails)
                             <h4  className='priceSuggested'>Price</h4>  
                             <div className="containerPriceSuggest">
                                 <h4 className='totalPrice'>$ {suggestedProduct.price}</h4>
-                                <button className='priceButton'></button>
+                                <button className='priceButton' onClick={()=>addToCart(productDetails.id)}><AiOutlineShoppingCart/></button>
                             </div>
                         </div>
                       </li> 
