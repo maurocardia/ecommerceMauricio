@@ -27,11 +27,13 @@
 .leftButton{
     position: relative;
     left: 0px;
+    z-index: 5;
 }
 
 .rightButton{
     position: relative;
-    right: 0px
+    right: 0px;
+    z-index: 5;
 }
 
 .productLeft > img{
@@ -39,6 +41,13 @@
     height: 15rem;
     object-fit: contain;
     margin-bottom: 2rem;
+    transition: 300ms;
+  
+   
+}
+
+.productLeft>img:hover{
+    transform: scale(1.2); 
 }
 
 .containerImgDetails{
@@ -53,8 +62,11 @@
     width: 30%;
     height: 30%;
     object-fit: contain;
+    transition: 300ms;
 }
-
+.containerImgDetails>img:hover{
+    transform: scale(3);
+}
 .containerProductLeft{
     display: flex;
     flex-direction: column;
@@ -167,7 +179,7 @@ margin-right: 15%;
     display: flex;
     margin-right: 1rem;
     flex-direction: column;
-    font-size: 1vw;
+    font-size: 3vw;
     align-items: center;
     border-style: solid;
     border-radius: 0.5rem;
@@ -184,6 +196,7 @@ margin-right: 15%;
     width: 8rem;
     text-align: center;
     padding: 0.3rem;
+    
 }
 
 .containerImgSuggested > img{
@@ -198,11 +211,13 @@ li{
 .containerSuggestedUl{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+   
 }
+
 
 .priceSuggested{
     margin-top: 1rem;
-    font-size: 1vw;
+    font-size: 2vw;
     margin-bottom: 0;
     display: flex;
     justify-content: start;
@@ -210,7 +225,7 @@ li{
 }
 
 .totalPrice{
-    font-size: 0.8vw;
+    font-size: 1.5vw;
     margin: 0;
     margin-right: 0.5rem;
 }
@@ -240,7 +255,7 @@ li{
 .titleSuggested{
     height: 1.5rem;
     margin-bottom: 0;
-    font-size: 1vw;
+    font-size: 1.8vw;
 }
 
 @media only screen and (min-width: 300px) and (max-width:600px) {
